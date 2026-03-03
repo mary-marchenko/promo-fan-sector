@@ -1,0 +1,61 @@
+.fan.loading#eurofanPage
+    .spinner-overlay
+        .spinner
+    .banner
+        .banner__wrapp
+            .container
+                h1.banner__top(data-translate="bannerTitleTop")
+                .banner__center(data-translate="bannerTitleCenter")
+                .banner__bottom(data-translate="bannerTitleBottom")
+                a.banner__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="eurofan_130226" data-button="authorization_banner")
+                button.banner__btn.btn.part-btn(data-translate="partBtn" data-promo="eurofan_130226" data-button="takePart_banner")
+                a.banner__btn.btn.play-btn(data-translate="playBtn" href="/sports/sport/soccer/" data-promo="eurofan_130226" data-button="placeBet_banner")
+        .decor
+            .decor__wrap
+                .decor__star.star1
+                    img(src="../img/star-glow.png" alt="star")
+                .decor__star.star2
+                    img(src="../img/star-glow.png" alt="star")
+                .decor__star.star3
+                    img(src="../img/star-glow.png" alt="star")
+    .info
+        .info__wrapp
+            .info__title(data-translate="infoTitle")
+            .info__txt(data-translate="infoText")
+            a.info__btn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="eurofan_130226" data-button="authorization_content")
+            button.info__btn.btn.part-btn(data-translate="partBtn" data-promo="eurofan_130226" data-button="takePart_content")
+            a.info__btn.btn.play-btn(data-translate="playBtn" href="/sports/sport/soccer/" data-promo="eurofan_130226" data-button="placeBet_content")
+    .drop
+        details.dropdown
+            summary(data-translate="detailsSummary")
+            .drop-txt
+                .drop-txt-list(data-translate="detailsText")
+    h2.h2.eurofan__results(data-translate="resultsTitle")
+    .table
+        .table__tabs
+            .table__tabs-item.active(data-week="1")
+                .table__tabs-name(data-translate="tableTab1")
+                .table__tabs-date(data-translate="tableDate1")
+            .table__tabs-item(data-week="2")
+                .table__tabs-name(data-translate="tableTab2")
+                .table__tabs-date(data-translate="tableDate2")
+        .table__head
+            .table__row
+                .table__row-item(data-translate="tablePlace")
+                .table__row-item(data-translate="tablePlayerId")
+                .table__row-item(data-translate="tablePoints")
+                .table__row-item(data-translate="tablePrize")
+        .table__body#table
+        .table__body#tableOther
+    a.bottomBtn.btn.unauth-msg(data-translate="signBtn" href="/login/" data-promo="eurofan_130226" data-button="authorization_bottom")
+    button.bottomBtn.btn.part-btn(data-translate="partBtn" data-promo="eurofan_130226" data-button="takePart_bottom")
+    a.bottomBtn.btn.play-btn(data-translate="playBtn" href="/sports/sport/soccer/" data-promo="eurofan_130226" data-button="placeBet_bottom")
+    .note
+        p.note__top(data-translate="noteTop")
+        p.note__bottom(data-translate="noteBottom")
+    .drop
+        details.dropdown.summary-rules.rules
+            summary(data-translate="rulesDetails").rules
+            .drop-txt
+                .drop-txt-list
+                    p(data-translate="rulesDetailsList")

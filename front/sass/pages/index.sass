@@ -1,0 +1,623 @@
+@import "../var"
+
+$font-display-medium: 'Display-Medium', sans-serif // 500
+$font-display-bold: 'Display-Bold', sans-serif // 700
+
+$font-text-regular: 'Text-Regular', sans-serif // 400
+$font-text-bold: 'Text-Bold', sans-serif // 700
+
+$font-exo2-regular: 'Exo2-Regular', sans-serif // 400
+$font-exo2-semiBold: 'Exo2-SemiBold', sans-serif // 600
+$font-exo2-bold: 'Exo2-Bold', sans-serif // 700
+
+$font-roboto-bold: 'RobotoCondensed-Bold', sans-serif // 700
+
+.hide
+  display: none !important
+
+body.light
+  background: $bg-main
+
+body
+  overscroll-behavior: none
+  -webkit-tap-highlight-color: transparent
+  background: $bg-main
+  img
+    max-width: 100%
+    height: auto
+  & > *
+    font-family: inherit
+
+//test
+.menu-btn
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+  width: fit-content
+  background: white
+  padding: 3px
+
+.menu-test
+  position: fixed
+  left: 0
+  top: 25px
+  z-index: 20
+  display: flex
+  gap: 2px
+  flex-direction: column
+  & > button
+    width: fit-content
+    background: white
+    color: black
+    padding: 2px
+    font-family: inherit
+    border-radius: 2px
+
+.fan
+  background: $bg-main
+  display: flex
+  flex-direction: column
+  align-items: center
+  overflow: hidden
+  -webkit-tap-highlight-color: transparent
+
+  .btn
+    width: fit-content
+    min-width: 166px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: $font-exo2-semiBold
+    text-transform: uppercase
+    font-size: 18px
+    color: $text-dark
+    padding: 0 20px
+    height: 50px
+    background-color: $accent-cyan
+    border-radius: 6px
+    z-index: 2
+    transition: background .4s ease-in-out
+    animation: pulseScale 3s ease-in-out infinite
+    &:hover
+      cursor: pointer
+      background-color: $accent-cyan-hover
+    &.lock
+      filter: grayscale(100%)
+      pointer-events: none
+      animation: none
+  .h2
+    font-family: $font-display-bold
+    color: $text-light
+    font-size: 40px
+    line-height: 37px
+    text-transform: uppercase
+    margin: 0 auto
+  .banner
+    width: 1610px
+    height: 606px
+    display: block
+    position: relative
+    background: url("../img/banner-bg-desc.jpg") no-repeat 50% 0/cover
+    background-size: auto 606px
+    padding: 115px 199px
+    @media screen and (max-width: 1050px)
+      background: url("../img/banner-bg-tab.jpg") no-repeat 0 0/contain
+      background-size: 100% auto
+    @media screen and (max-width: 600px)
+      background: url("../img/banner-bg-mob.jpg") no-repeat 0 0/contain
+      background-size: 100% auto
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      bottom: -3px
+      left: 0
+      width: 100%
+      height: 30%
+      background: linear-gradient(180deg, rgba(6, 16, 20, 0.00) 32.15%, rgba(6, 16, 20, 0.72) 56.25%, #061014 82.37%)
+    &__wrapp
+      position: relative
+    .container
+      display: flex
+      flex-direction: column
+      gap: 34px
+    &__top
+      font-family: $font-display-bold
+      font-size: 88px
+      line-height: 100%
+      text-transform: uppercase
+      color: $text-white
+    &__center
+      white-space: nowrap
+      border-radius: 8px
+      height: 60px
+      padding: 16px 20px 13px 20px
+      width: fit-content
+      display: flex
+      justify-content: center
+      align-items: center
+      background-color: $accent-blue
+      font-family: $font-text-bold
+      font-size: 44px
+      line-height: 44px
+      text-transform: uppercase
+      color: $text-white
+      position: relative
+    &__bottom
+      font-family: $font-display-medium
+      font-size: 32px
+      line-height: 38px
+      color: $text-white
+    .decor
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      &__wrap
+        position: relative
+        width: 100%
+        height: 100%
+      &__star
+        position: absolute
+        display: block
+        pointer-events: none
+        &.star1
+          top: -4%
+          right: 3.5%
+          width: 70px
+          height: 70px
+          animation: pulseStar 2s ease-in-out infinite
+        //&.star1
+        //  top: -4%
+        //  left: 91.5%
+        //  width: 70px
+        //  height: 70px
+        //  animation: pulseStar 2s ease-in-out infinite
+        &.star2
+          top: 23%
+          right: 11.5%
+          width: 50px
+          height: 50px
+          animation: pulseStar 3s ease-in-out infinite
+        &.star3
+          top: 37%
+          right: 38%
+          width: 60px
+          height: 60px
+          animation: pulseStar 2.5s ease-in-out infinite
+  .info
+    position: relative
+    width: 1366px
+    margin: 50px auto
+    border-radius: 10px
+    background: url("../img/info-bg-desc.jpg") no-repeat 100% 100%/cover
+    &::after
+      content: ''
+      display: block
+      position: absolute
+      bottom: 1px
+      left: 6px
+      width: 199%
+      height: 1px
+      background-color: $accent-blue
+      transform: scale(0.5)
+      transform-origin: bottom left
+    @media screen and (max-width: 1050px)
+      background: url("../img/info-bg-tab.jpg") no-repeat 0 0/contain
+      background-size: 100% auto
+    @media screen and (max-width: 600px)
+      background: url("../img/info-bg-mob.jpg") no-repeat 50% 100%/contain
+      background-size: 100% auto
+    &__wrapp
+      padding: 64px 0 64px 75px
+      width: 569px
+      display: flex
+      flex-direction: column
+      gap: 24px
+    &__title
+      text-transform: uppercase
+      font-family: $font-exo2-bold
+      font-size: 40px
+      line-height: 44px
+      color: $text-white
+    &__txt
+      font-family: $font-exo2-regular
+      font-size: 18px
+      line-height: 18px
+      color: $text-light
+  &__results
+    &.h2
+      text-align: center
+      margin-top: 71px
+      text-transform: uppercase
+      font-family: $font-display-bold
+      font-size: 40px
+      color: $text-light
+  .drop
+    margin: auto
+    width: 768px
+  .dropdown
+    margin: 32px auto
+    outline: none!important
+    cursor: pointer
+    position: relative
+    width: 100%
+    max-width: 768px
+    text-align: start
+    &.rules
+      margin: 15px auto 50px
+    summary::-webkit-details-marker
+      display: none
+    > summary
+      list-style: none
+    summary
+      width: 100%
+      font-family: $font-exo2-bold
+      font-size: 18px
+      color: $text-gray
+      padding: 12px 20px 12px 0px
+      outline: none!important
+      position: relative
+      display: flex
+      align-items: center
+      user-select: none
+      border-bottom: 1px solid rgba($border-gray, 0.2)
+      z-index: 1
+      ::-webkit-details-marker
+        display: none
+      &.rules
+        text-transform: uppercase
+      &:after
+        content: ''
+        background: url('../img/arrow-down.svg') no-repeat 50% 50%/cover
+        width: 12px
+        height: 12px
+        position: absolute
+        right: 0px
+        display: block
+    &[open]
+      summary
+        &:after
+          transform: rotate(180deg)
+    .drop-txt
+      width: 100%
+      margin-top: 30px
+      overflow-wrap: break-word
+      text-align: start
+      cursor: auto
+      background-size: 100% 100%
+      &-list
+        padding: 0px 10px 0px 0px
+        max-height: 280px
+        overflow-y: auto
+        scrollbar-width: auto
+        &::-webkit-scrollbar
+          width: 2px
+          background: $text-gray
+        &::-webkit-scrollbar-thumb
+          background: $accent-blue
+          width: 2px
+        p, h2, h3, h4, h5, h6, strong, div, span, ul>li, ol>li
+          margin-bottom: 10px
+          font-size: 16px
+          line-height: 22px
+          font-family: $font-text-regular
+          color: $text-gray
+        ul > li
+          padding-left: 20px
+          position: relative
+          &::before
+            position: absolute
+            content: ''
+            width: 4px
+            height: 4px
+            background: $text-gray
+            border-radius: 50%
+            display: inline-block
+            left: 7px
+            top: 8px
+        a
+          color: $text-gray
+          font-family: $font-text-regular
+          text-decoration: underline
+          position: relative
+          &:hover
+            text-decoration: none
+        .retreat1
+          padding-left: 20px
+        .retreat2
+          padding-left: 30px
+        .circle
+          padding-left: 20px
+          &:before
+            content: ''
+            width: 4px
+            height: 4px
+            background: $text-gray
+            border-radius: 50%
+            display: inline-block
+            margin: 0 5px 3px 0
+  .table
+    margin: 32px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    width: 100%
+    max-width: 768px
+    min-height: 440px
+    z-index: 1
+    background: $bg-table
+    &__tabs
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 24px
+      &-item
+        height: 45px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        cursor: pointer
+        transition: all 0.2s ease
+        border-bottom: 2px solid transparent
+        &:hover
+          .table__tabs-name
+            color: $accent-blue
+        &.active
+          border-color: $accent-blue
+          .table__tabs-name
+            color: $accent-blue
+        &.disabled
+          opacity: 0.8
+          cursor: not-allowed
+          &:hover
+            .table__tabs-name
+              color: $text-white
+      &-name
+        font-size: 14px
+        font-family: $font-roboto-bold
+        color: $text-white
+        background: transparent
+        border-bottom: 2px solid transparent
+        cursor: pointer
+        transition: all 0.2s ease
+        text-transform: uppercase
+      &-date
+        font-family: $font-exo2-regular
+        color: $text-muted
+        font-size: 10px
+    &__head
+      width: 100%
+      background-color: $bg-table-head
+      border-bottom: 1px solid $border-lighter
+      .table__row-item
+        font-family: $font-exo2-regular
+        color: $text-muted
+        font-size: 12px
+        height: 35px
+    &__body
+      width: 100%
+      display: flex
+      flex-direction: column
+      &#tableOther
+        background: $bg-table-other
+
+    &__row
+      padding: 0 10px 0 0
+      display: flex
+      width: 100%
+      align-items: center
+      justify-content: space-between
+      position: relative
+      border-bottom: 1px solid $border-lightest
+      transition: background 0.2s ease
+      &.place1, &.place2, &.place3
+        &.you
+          .you
+            left: 65px
+        .table__row-item
+          &:nth-child(1)
+            &::before
+              position: absolute
+              content: ""
+              display: block
+              width: 20px
+              height: 22px
+              left: 15px
+              @media screen and (max-width: 600px)
+                width: 15px
+                height: 16px
+      &.place1
+        .table__row-item
+          &:nth-child(1)
+            &::before
+              background: url("../img/gold.png") no-repeat 0 0/contain
+      &.place2
+        .table__row-item
+          &:nth-child(1)
+            &::before
+              background: url("../img/silver.png") no-repeat 0 0/contain
+      &.place3
+        .table__row-item
+          &:nth-child(1)
+            &::before
+              background: url("../img/bronze.png") no-repeat 0 0/contain
+      &-item
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        color: $text-gray
+        font-family: $font-exo2-bold
+        font-size: 14px
+        height: 51px
+        &:nth-child(1)
+          width: 100px
+          justify-content: center
+          @media screen and (max-width: 600px)
+            width: 85px
+        &:nth-child(2)
+          width: 80px
+        &:nth-child(3)
+          width: 70px
+        &:nth-child(4)
+          width: 105px
+          justify-content: center
+          padding-right: 0
+          font-weight: 400
+
+      &.you
+        .you
+          position: absolute
+          left: 10px
+          font-family: $font-exo2-bold
+          display: inline-flex
+          align-items: center
+          justify-content: center
+          background: $accent-blue
+          color: $text-white
+          font-size: 14px
+          padding: 4px 3px
+          border-radius: 2px
+          text-transform: uppercase
+          @media screen and (max-width: 600px)
+            padding: 1px 3px 2px
+            left: 4px
+      .place-icon
+        margin-right: 6px
+        width: 16px
+        height: 16px
+        position: absolute
+        left: 20px
+  .note
+    width: 768px
+    margin: 30px auto 0
+    display: flex
+    flex-direction: column
+    gap: 20px
+    p
+      font-family: $font-exo2-regular
+      font-size: 12px
+      line-height: 14px
+      color: $text-note
+  .summary-rules
+    summary
+      font-size: 16px
+
+//content styles
+.retreat1
+  padding-left: 20px
+  strong
+    font-family: $font-exo2-bold
+    color: $text-white
+  p
+    //&:not(:last-child)
+    padding-bottom: 15px
+
+.retreat2
+  padding-left: 40px
+  strong
+    font-family: $font-exo2-bold
+    color: $text-white
+  p
+    //&:not(:last-child)
+    padding-bottom: 15px
+
+
+.circle
+  padding-left: 20px
+  &:before
+    content: ''
+    width: 5px
+    height: 5px
+    background: $text-white
+    border-radius: 50%
+    display: inline-block
+    margin: 0 8px 3px 0
+
+@media screen and (max-width: 600px)
+  .circle
+    padding-left: 15px
+  .retreat1
+    padding-left: 15px
+  .retreat2
+    padding-left: 30px
+
+// loader
+
+.spinner-overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background-color: $bg-main
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 8
+
+.spinner
+  width: 60px
+  height: 60px
+  background: url("../img/loader.svg") no-repeat 0 0/contain
+  animation: scale .7s alternate infinite
+
+.eurofan.loading
+  max-height: 90vh
+  overflow: hidden
+
+@keyframes scale
+  0%
+    transform: scale(.8)
+  100%
+    transform: scale(1)
+
+
+@keyframes pulseScale
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+  100%
+    transform: scale(1)
+
+@keyframes pulseStar
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(2.2)
+  100%
+    transform: scale(1)
+
+// iOS custom scrollbar
+.ios-scrollbar-track
+  position: absolute
+  top: 0
+  right: 0
+  width: 2px
+  height: 100%
+  background: $text-gray
+  z-index: 10
+  pointer-events: none
+
+.ios-scrollbar-thumb
+  width: 2px
+  background: $accent-blue
+  border-radius: 1px
+  position: absolute
+  top: 0
+  right: 0
+
+// Hide native scrollbar on iOS when custom scrollbar is active
+.drop-txt-list[data-ios-scrollbar="true"]
+  scrollbar-width: none
+  -ms-overflow-style: none
+  &::-webkit-scrollbar
+    display: none
+    width: 0
+    height: 0
