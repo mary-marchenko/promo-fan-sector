@@ -27,7 +27,8 @@
         el.removeAttribute('data-translate');
     });
 
-    let locale = "uk"
+    // let locale = "uk"
+    let locale = sessionStorage.getItem("locale") || "uk"
 
     let loaderBtn = false
 
@@ -41,7 +42,8 @@
     let i18nData = {};
     const translateState = true;
 
-    let userId = null
+    // let userId = null
+    let userId = Number(sessionStorage.getItem("userId")) ?? null
 
     const request = function (link, extraOptions) {
         return fetch(apiURL + link, {
@@ -59,6 +61,10 @@
                 console.error('API request failed:', err);
 
                 reportError(err);
+
+                document.querySelector('.fan').style.display = 'none';
+
+                window.location.href = '/promos/promo/stub/';
 
                 return Promise.reject(err);
             });
@@ -174,13 +180,13 @@
             stack: err?.stack || ''
         };
 
-        fetch('', {
+        fetch('https://allwin-prom.pp.ua/api-cms/reports/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(reportData)
-        }).catch(console.warn);
+        }).catch(() => {});
     }
 
     function translate() {
@@ -421,8 +427,6 @@
             });
     }
 
-    loadTranslations().then(init)
-
     // iOS custom scrollbar
     const isIOS = (() => {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
@@ -491,5 +495,77 @@
     }
 
     initIOSScrollbars();
+
+    loadTranslations().then(init)
+
+    // TEST
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".menu-btn")?.addEventListener("click", () => {
+            document.querySelector(".menu-test")?.classList.toggle("hide");
+        });
+    });
+
+    const lngBtn = document.querySelector(".lng-btn")
+
+    lngBtn.addEventListener("click", () => {
+        if (sessionStorage.getItem("locale")) {
+            sessionStorage.removeItem("locale");
+        } else {
+            sessionStorage.setItem("locale", "en");
+        }
+        window.location.reload();
+    });
+
+    const authBtn = document.querySelector(".auth-btn")
+    const betBtn = document.querySelector(".btn-bet-online")
+
+    authBtn.addEventListener("click", () =>{
+        if(userId){
+            sessionStorage.removeItem("userId")
+        }else{
+            sessionStorage.setItem("userId", "1112")
+        }
+        window.location.reload()
+    });
+
+    betBtn.addEventListener("click", () =>{
+        sessionStorage.setItem("userId", "777")
+        window.location.reload()
+    });
+
+    document.querySelector('.btn-phase').addEventListener('click', function() {
+        let activeWeek = 2
+        renderUsers(activeWeek, tableData);
+        document.querySelectorAll(".table__tabs-item").forEach((tab, i) =>{
+            tab.classList.remove('active');
+            if(i === activeWeek - 1) tab.classList.add('active');
+        })
+        tableTabs.forEach(tab =>{
+            if(Number(tab.getAttribute("data-week")) > activeWeek){
+                tab.style.pointerEvents = "none";
+            }else{
+                tab.style.pointerEvents = "initial";
+            }
+
+        })
+        document.addEventListener("click", e =>{
+            if(e.target.closest(".table__tabs-item")){
+                if(Number(e.target.closest(".table__tabs-item").getAttribute("data-week")) > activeWeek) {
+                    return
+                }
+                e.target.closest(".table__tabs-item").style.pointerEvents = "initial";
+                tableTabs.forEach(tab =>{
+                    tab.classList.remove("active");
+                })
+                let tabWeek = e.target.closest(".table__tabs-item").getAttribute("data-week");
+                e.target.closest(".table__tabs-item").classList.add("active");
+                renderUsers(tabWeek)
+            }
+        })
+
+    });
+
+
 
 })();
